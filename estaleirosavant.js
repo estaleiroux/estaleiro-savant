@@ -1,26 +1,21 @@
 $(document).ready(function() {
-  var r = [];
-  r[0]=2;
-  r[4]=5;
-  console.log(r);
   var tudo = [];
     tudo = $.getJSON( "data.json", function( data ) {
       processMyData(data);
       console.log(data);
-      return data;
+      $( "#dados" ).html( JSON.stringify(tudo));
+        return false;
       /*  var items = [];
-
         $.each( data, function( key, val ) {//key = indice, val=objeto
           console.log(val);
           items.push( "<li id='" + key.idade + "'>" + val.idade + "</li>" );
         });
-       
         $( "<ul/>", {
           html: items.join( "" )
         }).appendTo( "body" );
         */
       });
-      //console.log(tudo);
+    //console.log(tudo);
 
       function calculaSaida(){
         console.log($( "#idade" ).value);
@@ -29,8 +24,7 @@ $(document).ready(function() {
       }
 
       function processMovies(element){
-        var movies = element.filmes.split(',');
-        console.log(movies);
+        var movies = element.filme.split(',');
         movies.forEach( movie =>{
             if(movie.trim() =='Ação')
               element.m[0] = true; 
@@ -82,7 +76,7 @@ $(document).ready(function() {
       }
 
       function processSongs(element){
-        var songs = element.musicas.split(',');
+        var songs = element.musica.split(',');
         songs.forEach(song => {
           if(song.trim() =='Axé')
             element.s[0] = true;
@@ -211,7 +205,6 @@ $(document).ready(function() {
           processMovies(element);
           processBooks(element);
           processSongs(element);
-          console.log(element);
         });
 
       }
