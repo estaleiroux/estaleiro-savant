@@ -1,6 +1,22 @@
 //"recente":"Pai Rico, Pai Pobre","preferido":"O segredo de Luiza",
-//s,m,b
-var pessoa = {"idade":47,"genero":0,"escolaridade":1,"s":[false,true,false,false,false,false,false,true,false,true,false,false,true,true,false,false,false,false,true,false,false],"m":[true,true,false,false,true,true,true,true,true,false,true,true,false,true,true,true,true,true,false,false,false,false,false],"b":[false,false,false,false,false,false,false,true,false,true,false,true,false,true,true,true,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]};
+
+//"recente":"","preferido":"A arte de enganar Kevin mitinik"
+//           {"idade":31,"genero":0,"escolaridade":1,"s":[false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false],"m":[true,true,false,false,false,false,false,false,true,false,true,false,false,true,false,true,true,true,false,false,false,false,false],"b":[true,false,false,false,false,false,false,true,true,true,false,true,false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]},
+//                                                       [false,false,false,false,false,false,false,true,false,true,false,false,true,false,false,false,false,true,false,false,false],"m":[true,true,false,false,false,true,true,false,true,false,true,true,true,true,false,true,true,true,false,true,false,true,false],"b":[false,false,false,false,false,false,false,false,false,false,false,true,false,false,true,true,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]},
+//var pessoa = {"idade":47,"genero":0,"escolaridade":1,"s":[false,true,false,false,false,false,false,true,false,true,false,false,true,true,false,false,false,false,true,false,false],"m":[true,true,false,false,true,true,true,true,true,false,true,true,false,true,true,true,true,true,false,false,false,false,false],"b":[false,false,false,false,false,false,false,true,false,true,false,true,false,true,true,true,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]};//345
+var pessoa = {"idade":30,"genero":0,"escolaridade":4,"s":[false,false,false,
+    false,false,false,false,true,
+    false,false,false,false,
+    true,false,false,true,false,false,true,false,true],
+    "m":[true,true,false,false,false,true,false,false,false,false,false,false,true,
+    true,false,false,false,true,false,true,false,true,false],
+    "b":[false,false,false,true,
+    false,false,false,true,
+    true,false,false,true,
+    false,false,false,false,false,false,false,false,
+    true,false,false,false,false,true,
+    false,false,false,false,true,
+    false,false,false]};//diemisom
 $(document).ready(function() {
     $("#pessoa").html(JSON.stringify(pessoa));
 });
@@ -18,7 +34,7 @@ function knn(person){
         });
         console.log(resposta);
         sortWithIndeces(resposta);
-        alert(test.sortIndices.join(","));
+        console.log(resposta.sortIndices.join(","));
       //$( "#dados" ).html( JSON.stringify(data));
     });
 }
@@ -55,7 +71,7 @@ function distanciaGosto(a, b){
     var resposta = 0;
     a.forEach( (s, i) => {
         if(s!=b[i])
-            resposta+=0.5;
+            resposta+=1;
     });
     return resposta;
 }
