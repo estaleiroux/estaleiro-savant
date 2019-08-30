@@ -5,15 +5,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
-        <form name="myForm" onsubmit="calculaSaida(); return false;">
-            Idade: <input type="text" name="idade" id="idade"><br>
-            Gênero: <input type="text" name="genero" id="genero"><br>
-            Escolaridade: <input type="text" name="escolaridade" id="escolaridade"><br>
-            Filmes: <input type="text" name="filmes" id="filmes"><br>
-            Músicas: <input type="text" name="musicas" id="musicas"><br>
-            Livros: <input type="text" name="livros" id="livros"><br>
-            <input type="button" value="Enviar" id="execute"> 
-        </form>
+        Pessoa: <p id="pessoa"></p><br>
+        <input type="button" value="Enviar" onclick="knn(pessoa)" id="execute"> 
+        <p id="resultado"></p>
         <script src="knn.js"></script>
     </body>
     <div id="dados"> 
