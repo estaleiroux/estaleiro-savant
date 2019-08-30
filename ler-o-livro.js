@@ -164,7 +164,7 @@ function envia() {
     obj.m = getArrayBooleanCheckboxs($(`[type="checkbox"][name="cinema"]`));
     obj.b = getArrayBooleanCheckboxs($(`[type="checkbox"][name="literario"]`));
     console.log('Dados', obj);
-    resultado = knn(obj);
+    resultado = knnMock(obj);
 
 
     $('.card.wizard-card').removeClass('opacity-1');
@@ -208,7 +208,7 @@ function envia() {
        
         $('.card-resultado').show();
 
-    }, 1000);
+    }, 8000);
 }
 
 function pesquisa(termo){
@@ -229,7 +229,7 @@ function getArrayBooleanCheckboxs(checkboxs) {
     return array;
 }
 
-function knn(pessoa) {
+function knnMock(pessoa) {
 
     return [
         {
