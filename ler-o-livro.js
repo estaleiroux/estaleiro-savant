@@ -155,20 +155,21 @@ defineSessaoCheckBox('cinema', cinemas, 'fa fa-play-circle');
 defineSessaoCheckBox('literario', literarios, 'fa fa-book');
 defineSessaoRadio('escolaridade', escolaridades, 'fa fa-university');
 
-
+var pessoaNow = {};
 async function envia() {
     var obj = {};
     var nome = $('input[name="nome"]').val();
     $('#textoResposta').html(nome+', acredito que você vai gostar desse livro:');
     obj.idade = $('input[name="idade"]').val();
     obj.genero = $(`[type="radio"][name="genero"][checked]`).val();
-    obj.ecolaridade = $(`[type="radio"][name="escolaridade"][checked]`).val();
+    obj.escolaridade = $(`[type="radio"][name="escolaridade"][checked]`).val();
     obj.s = getArrayBooleanCheckboxs($(`[type="checkbox"][name="gostomusical"]`));
     obj.m = getArrayBooleanCheckboxs($(`[type="checkbox"][name="cinema"]`));
     obj.b = getArrayBooleanCheckboxs($(`[type="checkbox"][name="literario"]`));
     //console.log('Dados', obj);
     //resultado = knnMock(obj);
     resultado = await knn(obj);
+    pessoaNow = obj;
     //console.log(resultado);
 
     $('.card.wizard-card').removeClass('opacity-1');
@@ -198,7 +199,7 @@ async function envia() {
                             <br><br><br><h6 align="center"><a href="javascript:pesquisa('${resultado.p}')" >${resultado.p}</a></h6>
                         </div>
                         <div class="col-sm-6 col-xs-6 ">
-                            <img class="img-resultado img-responsive" src="${resultado.pi}"  onclick="pesquisa('${resultado.r}')"/>
+                            <img class="img-resultado img-responsive" src="${resultado.pi}"  onclick="pesquisa('${resultado.p}')"/>
                         </div>
                     </div>`
         );
@@ -211,7 +212,7 @@ async function envia() {
         //$('.card-resultado').append(linhaResultadoP);
     });
     $('.card-resultado').append('<p align="center" id="botoesGostei"><input type="button" class="btn btn-fill btn-success btn-wd" onclick="proximo(1)" value="Gostei, mostre mais um..."/>&nbsp;<input type="button" class="btn btn-fill btn-default btn-wd" onclick="proximo(2)" value="Não gostei, mostre outro..."/></p>');
-    proximo();
+    proximo(-1);
 
     setTimeout(() => {
         $('body').removeClass('bg-loading-book');
@@ -242,6 +243,10 @@ function getArrayBooleanCheckboxs(checkboxs) {
 }
 
 function proximo(opiniao){
+    if(opiniao<0)	
+        $.post( "http://www.redecel.com/verolivro.php", { objeto: JSON.stringify(resultadoGlobal[contador].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
+    else
+        $.post( "http://www.redecel.com/verolivro.php", { objeto: JSON.stringify(resultadoGlobal[contador-1].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
     if(resultadoGlobal[contador]){
         $('#results').html(resultadoGlobal[contador].prop('outerHTML'));
         contador++;

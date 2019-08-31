@@ -1,15 +1,11 @@
-var pessoa = {"idade":30,"genero":0,"escolaridade":2,"r":"Sapiens","p":"Saga Harry Potter , Sapiens ","s":[false,false,false,true,true,true,true,false,false,false,false,false,false,false,false,true,false,true,true,false,true],"m":[true,true,false,false,true,true,false,false,true,false,true,false,false,false,true,true,true,true,false,true,false,true,true],"b":[false,false,false,false,true,false,true,true,true,true,false,false,false,false,true,false,true,false,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false,true]};
-$(document).ready(function() {
-    $("#pessoa").html(JSON.stringify(pessoa));
-});
+/*
+@author Diemisom Melo
+@company EstaleiroUX/Banpará
 
-async function knnTest(person){
-    var x = await myKnn(person);
-    limpar(x);
-    console.log(x);
-    $("#dados").html(JSON.stringify(x));
-}
-
+A K-NN implementation in Javascript to find the nearest person by cultural preferences and demographic information.
+The distance function is an empiric abstraction that showed good preliminaries results.
+Data preprocessing was made by Mr. Vinicius Freitas.
+*/
 function limpar(x){
     x.forEach(e =>{
         delete(e.b);
@@ -20,6 +16,7 @@ function limpar(x){
         delete(e.idade);
     });
 }
+
 async function knn(person){
     var x = await myKnn(person);
     limpar(x);
@@ -30,22 +27,20 @@ async function myKnn(person){
     var respostaG = [];
     await $.getJSON( "dadosTratados2.json", function( data ) {
         var resposta = iniciaRespostas(349);
-        console.log(person);
         data.forEach((element, i) => {
             resposta[i] = distancia(person, element);
         });
         sortWithIndeces(resposta);
-        console.log(resposta.sortIndices.join(","));
         resp = Array(10);
         for(i=0; i<10; i++){
             resp[i] = data[resposta.sortIndices[i]];
         }
-        console.log(resp);
         respostaG = resp;
     });
     return respostaG;
 }
 
+//Thanks to Mr. Dave Aaron Smith from Stackoverflow: https://stackoverflow.com/questions/3730510/javascript-sort-array-and-return-an-array-of-indicies-that-indicates-the-positi
 function sortWithIndeces(toSort) {
     for (var i = 0; i < toSort.length; i++) {
       toSort[i] = [toSort[i], i];
@@ -66,25 +61,19 @@ function distancia(pessoaA, pessoaB){
     resultado += distanciaIdade(pessoaA.idade, pessoaB.idade);
     resultado += distanciaGenero(pessoaA.genero, pessoaB.genero);
     resultado += distanciaEscolaridade(pessoaA.escolaridade, pessoaB.escolaridade);
-    resultado += distanciaGosto(pessoaA.s, pessoaB.s);//21
-    resultado += distanciaGosto(pessoaA.m, pessoaB.m);//23
-    resultado += distanciaGosto(pessoaA.b, pessoaB.b);//34
+    resultado += distanciaGosto(pessoaA.s, pessoaB.s, 1);//21
+    resultado += distanciaGosto(pessoaA.m, pessoaB.m, 1);//23
+    resultado += distanciaGosto(pessoaA.b, pessoaB.b, 2);//34
     return resultado;
 }
 
-function distanciaGosto(a, b){
+function distanciaGosto(a, b, peso){
     var resposta = 0;
     a.forEach( (s, i) => {
         if(s!=b[i])
-            resposta+=1;
+            resposta+=peso;
     });
     return resposta;
-}
-function distanciaFilmes(moviesA, moviesB){
-    return 0;
-}
-function distanciaLivros(booksA, booksB){
-    return 0;
 }
 
 function distanciaEscolaridade(escolaridadeA, escolaridadeB){
@@ -111,7 +100,7 @@ function distanciaEscolaridade(escolaridadeA, escolaridadeB){
 function distanciaGenero(generoA, generoB){
     if(generoA==generoB)
         return 0;
-    return 2;
+    return 3;
 }
 
 function distanciaIdade(pidade, eidade){
@@ -122,11 +111,23 @@ function distanciaIdade(pidade, eidade){
     if ( dif<3){//3 anos de diferença
         return 0.1;
     }
-    else if(dif<10){
-        return 0.5
+    else if(dif<5){
+        return 0.5;
+    }
+    else if(dif<8){
+        return 1;
+    }
+    else if(dif<11){
+        return 2;
+    }
+    else if(dif<20){
+        return 4;
+    }
+    else if(dif<35){
+        return 6;
     }
     else
-        return 1.5;
+        return 8;
 }
 
 function iniciaRespostas(x){
