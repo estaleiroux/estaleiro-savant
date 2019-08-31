@@ -1,42 +1,49 @@
-//"recente":"Pai Rico, Pai Pobre","preferido":"O segredo de Luiza",
-
-//"recente":"","preferido":"A arte de enganar Kevin mitinik"
-//           {"idade":31,"genero":0,"escolaridade":1,"s":[false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false],"m":[true,true,false,false,false,false,false,false,true,false,true,false,false,true,false,true,true,true,false,false,false,false,false],"b":[true,false,false,false,false,false,false,true,true,true,false,true,false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]},
-//                                                       [false,false,false,false,false,false,false,true,false,true,false,false,true,false,false,false,false,true,false,false,false],"m":[true,true,false,false,false,true,true,false,true,false,true,true,true,true,false,true,true,true,false,true,false,true,false],"b":[false,false,false,false,false,false,false,false,false,false,false,true,false,false,true,true,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]},
-//var pessoa = {"idade":47,"genero":0,"escolaridade":1,"s":[false,true,false,false,false,false,false,true,false,true,false,false,true,true,false,false,false,false,true,false,false],"m":[true,true,false,false,true,true,true,true,true,false,true,true,false,true,true,true,true,true,false,false,false,false,false],"b":[false,false,false,false,false,false,false,true,false,true,false,true,false,true,true,true,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false]};//345
-var pessoa = {"idade":30,"genero":0,"escolaridade":4,"s":[false,false,false,
-    false,false,false,false,true,
-    false,false,false,false,
-    true,false,false,true,false,false,true,false,true],
-    "m":[true,true,false,false,false,true,false,false,false,false,false,false,true,
-    true,false,false,false,true,false,true,false,true,false],
-    "b":[false,false,false,true,
-    false,false,false,true,
-    true,false,false,true,
-    false,false,false,false,false,false,false,false,
-    true,false,false,false,false,true,
-    false,false,false,false,true,
-    false,false,false]};//diemisom
+var pessoa = {"idade":30,"genero":0,"escolaridade":2,"r":"Sapiens","p":"Saga Harry Potter , Sapiens ","s":[false,false,false,true,true,true,true,false,false,false,false,false,false,false,false,true,false,true,true,false,true],"m":[true,true,false,false,true,true,false,false,true,false,true,false,false,false,true,true,true,true,false,true,false,true,true],"b":[false,false,false,false,true,false,true,true,true,true,false,false,false,false,true,false,true,false,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false,true]};
 $(document).ready(function() {
     $("#pessoa").html(JSON.stringify(pessoa));
 });
 
-function knn(person){
-    console.log(person.s[0] == person.s[0]);
-    console.log(person);
-    tudo = $.getJSON( "dadosTratados2.json", function( data ) {
+async function knnTest(person){
+    var x = await myKnn(person);
+    limpar(x);
+    console.log(x);
+    $("#dados").html(JSON.stringify(x));
+}
+
+function limpar(x){
+    x.forEach(e =>{
+        delete(e.b);
+        delete(e.s);
+        delete(e.m);
+        delete(e.genero);
+        delete(e.escolaridade);
+        delete(e.idade);
+    });
+}
+async function knn(person){
+    var x = await myKnn(person);
+    limpar(x);
+    return x;
+}
+
+async function myKnn(person){
+    var respostaG = [];
+    await $.getJSON( "dadosTratados2.json", function( data ) {
         var resposta = iniciaRespostas(349);
         console.log(person);
         data.forEach((element, i) => {
-            console.log(element);
             resposta[i] = distancia(person, element);
-            //ordena o array
         });
-        console.log(resposta);
         sortWithIndeces(resposta);
         console.log(resposta.sortIndices.join(","));
-      //$( "#dados" ).html( JSON.stringify(data));
+        resp = Array(10);
+        for(i=0; i<10; i++){
+            resp[i] = data[resposta.sortIndices[i]];
+        }
+        console.log(resp);
+        respostaG = resp;
     });
+    return respostaG;
 }
 
 function sortWithIndeces(toSort) {
@@ -53,8 +60,6 @@ function sortWithIndeces(toSort) {
     }
     return toSort;
   }
-  
-  
 
 function distancia(pessoaA, pessoaB){
     var resultado = 0;
