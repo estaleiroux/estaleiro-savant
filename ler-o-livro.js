@@ -1,3 +1,5 @@
+var resultadoGlobal = [];
+var contador=0;
 var musicas = ["Axé"
     , "Blues"
     , "Brega , Bregas Marcantes"
@@ -153,19 +155,22 @@ defineSessaoCheckBox('cinema', cinemas, 'fa fa-play-circle');
 defineSessaoCheckBox('literario', literarios, 'fa fa-book');
 defineSessaoRadio('escolaridade', escolaridades, 'fa fa-university');
 
-
-function envia() {
+var pessoaNow = {};
+async function envia() {
     var obj = {};
-    //obj.nome = $('input[name="nome"]').val();
+    var nome = $('input[name="nome"]').val();
+    $('#textoResposta').html(nome+', acredito que você vai gostar desse livro:');
     obj.idade = $('input[name="idade"]').val();
     obj.genero = $(`[type="radio"][name="genero"][checked]`).val();
-    obj.ecolaridade = $(`[type="radio"][name="escolaridade"][checked]`).val();
+    obj.escolaridade = $(`[type="radio"][name="escolaridade"][checked]`).val();
     obj.s = getArrayBooleanCheckboxs($(`[type="checkbox"][name="gostomusical"]`));
     obj.m = getArrayBooleanCheckboxs($(`[type="checkbox"][name="cinema"]`));
     obj.b = getArrayBooleanCheckboxs($(`[type="checkbox"][name="literario"]`));
-    console.log('Dados', obj);
-    resultado = knnMock(obj);
-
+    //console.log('Dados', obj);
+    //resultado = knnMock(obj);
+    resultado = await knn(obj);
+    pessoaNow = obj;
+    //console.log(resultado);
 
     $('.card.wizard-card').removeClass('opacity-1');
 
@@ -176,9 +181,13 @@ function envia() {
     $('.card-form').hide();
     
     resultado.forEach(resultado => {
+        if(resultado.r && !resultado.ri)
+            resultado.ri = 'https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png';
+        if(resultado.p && !resultado.pi)
+            resultado.pi = 'https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png';
         var linhaResultadoR = $(`<div class="row linha-resultado">
                         <div class="col-sm-6 col-xs-6 ">
-                            <h6><a href="javascript:pesquisa('${resultado.r}')" >${resultado.r}</a></h6>
+                            <br><br><br><h6 align="center"><a href="javascript:pesquisa('${resultado.r}')" >${resultado.r}</a></h6>
                         </div>
                         <div class="col-sm-6 col-xs-6 ">
                             <img class="img-resultado img-responsive" src="${resultado.ri}" onclick="pesquisa('${resultado.r}')" />
@@ -187,32 +196,36 @@ function envia() {
         );
         var linhaResultadoP = $(`<div class="row linha-resultado">
                         <div class="col-sm-6 col-xs-6 ">
-                            <h6><a href="javascript:pesquisa('${resultado.p}')" >${resultado.p}</a></h6>
+                            <br><br><br><h6 align="center"><a href="javascript:pesquisa('${resultado.p}')" >${resultado.p}</a></h6>
                         </div>
                         <div class="col-sm-6 col-xs-6 ">
-                            <img class="img-resultado img-responsive" src="${resultado.pi}"  onclick="pesquisa('${resultado.r}')"/>
+                            <img class="img-resultado img-responsive" src="${resultado.pi}"  onclick="pesquisa('${resultado.p}')"/>
                         </div>
                     </div>`
         );
-
-        $('.card-resultado').append(linhaResultadoR);
-        $('.card-resultado').append(linhaResultadoP);
+        
+        if(resultado.r)
+            resultadoGlobal.push(linhaResultadoR);
+        if(resultado.p)
+            resultadoGlobal.push(linhaResultadoP);
+        //$('.card-resultado').append(linhaResultadoR);
+        //$('.card-resultado').append(linhaResultadoP);
     });
+    $('.card-resultado').append('<p align="center" id="botoesGostei"><input type="button" class="btn btn-fill btn-success btn-wd" onclick="proximo(1)" value="Gostei, mostre mais um..."/>&nbsp;<input type="button" class="btn btn-fill btn-default btn-wd" onclick="proximo(2)" value="Não gostei, mostre outro..."/></p>');
+    proximo(-1);
 
     setTimeout(() => {
         $('body').removeClass('bg-loading-book');
         $('.card.wizard-card').removeClass('opacity-0');
         $('.card.wizard-card').addClass('opacity-1');
         $('body').addClass('opacity-1');
-
-       
         $('.card-resultado').show();
 
     }, 8000);
 }
 
 function pesquisa(termo){
-    var url = 'https://www.google.com/search?q=';
+    var url = 'https://www.google.com/search?q=Livro+';
     termo = termo.split(' ').join('+');
     url += termo;
     window.open(url);
@@ -229,14 +242,18 @@ function getArrayBooleanCheckboxs(checkboxs) {
     return array;
 }
 
-function knnMock(pessoa) {
-
-    return [
-        {
-            r: "Gestão de projetos - livro preferido de todos",
-            ri: "https://d3pvly1u1c1g2.cloudfront.net/images/livros/capa_gerenciamento_projetos_9edicao.jpg",
-            p: "GOT - Mais recente lido",
-            pi: "https://www.extra-imagens.com.br/livros/LivrodeLiteraturaEstrangeira/FiccaoCientifica/1995678/8561460/Livro-Game-of-Thrones-Por-Dentro-da-Serie-da-HBO-George-R-R-Martin-1995678.jpg"
-        }
-    ]
+function proximo(opiniao){
+    if(opiniao<0)	
+        $.post( "http://www.redecel.com/verolivro.php", { objeto: JSON.stringify(resultadoGlobal[contador].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
+    else
+        $.post( "http://www.redecel.com/verolivro.php", { objeto: JSON.stringify(resultadoGlobal[contador-1].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
+    if(resultadoGlobal[contador]){
+        $('#results').html(resultadoGlobal[contador].prop('outerHTML'));
+        contador++;
+    }
+    else{
+        $('#botoesGostei').hide();
+        $('#results').html('<div class="row linha-resultado"><div class="col-sm-6 col-xs-6 "><br><br><br><h6 align="center">Não tenho mais livros</h6></div><div class="col-sm-6 col-xs-6 "><img class="img-resultado img-responsive" src="https://imgflip.com/s/meme/Not-Bad-Obama.jpg" /></div></div>');
+        $('.card-resultado').append('<a href="index.html"><p align="center" id="recomecar"><input type="button" class="btn btn-fill btn-success btn-wd" value="Recomeçar"/></p></a>');
+    }
 }

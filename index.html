@@ -46,8 +46,9 @@
                                 <h3 class="wizard-title">
                                     Ver-o-Livro
                                 </h3>
-                                <h5>Aqui estão alguns livros indicados pra você! :)</h5>
+                                <h5 id="textoResposta"></h5>
                             </div>
+                            <div id="results"></div>
                             
                         </div>
 
@@ -59,7 +60,7 @@
                                     <h3 class="wizard-title">
                                         Ver-o-Livro
                                     </h3>
-                                    <h5>Descubra um novo Livro para chamar de seu!</h5>
+                                    <h5>Deixe a Inteligência Artificial do EstaleiroUX lhe indicar um livro</h5>
                                 </div>
                                 <div class="wizard-navigation">
                                     <ul>
@@ -72,7 +73,7 @@
 
                                 <div class="tab-content">
                                     <div class="tab-pane" id="about">
-                                        <h4 class="info-text"> Vamos falar um pouco sobre quem você é</h4>
+                                        <h4 class="info-text"> Preciso saber um pouco sobre você</h4>
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="input-group">
@@ -81,7 +82,7 @@
                                                     </span>
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Sua Idade</label>
-                                                        <input name="idade" type="number" class="form-control">
+                                                        <input name="idade" type="number" min="0" max="120" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -94,7 +95,7 @@
                                                     </span>
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Seu Nome </label>
-                                                        <input name="nome" type="text" class="form-control">
+                                                        <input name="nome" id="nomePessoa" type="text" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,21 +140,18 @@
                                         </Span>
                                     </div>
                                     <div class="tab-pane" id="gostomusical">
-                                        <h4 class="info-text"> Que gêneros musicais você gosta? (marque quantos quiser)
-                                        </h4>
+                                        <h4 class="info-text">Quais seus estilos preferidos?</h4>
 
                                     </div>
                                     <div class="tab-pane" id="cinema">
-                                        <h4 class="info-text"> Que gêneros de filmes você gosta? (marque quantos quiser)
-                                        </h4>
+                                        <h4 class="info-text">Quais categorias de filmes você prefere?</h4>
 
                                     </div>
                                     <div class="tab-pane" id="literario">
                                         <!-- <input type="button" 
                                             class="btn btn-finish btn-fill btn-success btn-wd"
                                             name="finish" value="Finalizar" onclick="envia()" /> -->
-                                        <h4 class="info-text"> Que gêneros literários você gosta? (marque quantos
-                                            quiser) </h4>
+                                        <h4 class="info-text">Estamos acabando... Apenas me conte quais tipos de livros você prefere?</h4>
                                     </div>
                                 </div>
                                 <div class="wizard-footer">
