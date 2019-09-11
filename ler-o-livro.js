@@ -211,7 +211,7 @@ async function envia() {
         //$('.card-resultado').append(linhaResultadoR);
         //$('.card-resultado').append(linhaResultadoP);
     });
-    $('.card-resultado').append('<p align="center" id="botoesGostei"><input type="button" class="btn btn-fill btn-success btn-wd" onclick="proximo(1)" value="Gostei, mostre mais um..."/>&nbsp;<input type="button" class="btn btn-fill btn-default btn-wd" onclick="proximo(2)" value="Não gostei, mostre outro..."/></p>');
+    $('.card-resultado').append('<p align="center" id="botoesGostei"><input type="button" class="btn btn-fill btn-success btn-wd" onclick="proximo(3)" value="Já li e Gostei"/>&nbsp;<input type="button" class="btn btn-fill btn-default btn-wd" onclick="proximo(4)" value="Já Li e NÃO Gostei"/>&nbsp;<input type="button" class="btn btn-fill btn-success btn-wd" onclick="proximo(1)" value="Gostaria de Ler"/>&nbsp;<input type="button" class="btn btn-fill btn-default btn-wd" onclick="proximo(2)" value="Não Leria"/></p>');
     proximo(-1);
 
     setTimeout(() => {
