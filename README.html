@@ -1,0 +1,381 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\dmelo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.4.3\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="ver-o-livro">VER-O-LIVRO</h1>
+
+<h2 class="mume-header" id="recomendador-de-livros-utilizando-ia">Recomendador de Livros utilizando IA</h2>
+
+<h1 class="mume-header" id="introdu%C3%A7%C3%A3o">Introdu&#xE7;&#xE3;o</h1>
+
+<p>O Ver-O-Livro foi concebido pelo EstaleiroUX, Laborat&#xF3;rio de Inova&#xE7;&#xE3;o do Banpar&#xE1;, para ser apresentado ao p&#xFA;blico da XXIII Feira Pan Amaz&#xF4;nica do Livro e das Multivozes, em Bel&#xE9;m. O objetivo da iniciativa foi de criar uma ferramenta em quatro dias que pudesse demonstrar um pouco do fluxo de trabalho e dos resultados produzidos pelo Laborat&#xF3;rio, utilizando tecnologias e princ&#xED;pios atuais de desenvolvimento de sistemas e inova&#xE7;&#xE3;o.</p>
+<p>Assim, optou-se por criar algo que uni-se: Intelig&#xEA;ncia Artificial, Desenvolvimento de Software, t&#xE9;cnicas de DevOps e que fosse aderente aos interesses do p&#xFA;blico da Feira do Livro. A ideia que mostrou-se alinhada aos objetivos foi: &quot;Construir um sistema de recomenda&#xE7;&#xE3;o de livros com base em Intelig&#xEA;ncia Artificial&quot;.</p>
+<p>O plano de a&#xE7;&#xE3;o para o projeto foi definido conforme abaixo: (@dcarlospa)</p>
+<ul>
+<li>
+<ol>
+<li>Obter um conjunto de dados na WEB; (@patriciadaibes e @vrfreitas)</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Obter dados via Question&#xE1;rio no Google Forms, unindo com o dataset da web; (@vrfreitas)</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Enviar e-mail para todos os funcion&#xE1;rios do Banco, convidando-os a participar da pesquisa; (@patriciadaibes)</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Definir o algoritmo de Machine Learning (ML) que seria utilizado e iniciar a implementa&#xE7;&#xE3;o; (@dcarlospa)</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>Iniciar o desenvolvimento do Frontend, de prefer&#xEA;ncia reutilizando algum template de c&#xF3;digo aberto; (@ewertom-moraes)</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>Consolidar o Conjunto de Dados com base no resultado da pesquisa; (@vrfreitas)</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>Treinar e testar o modelo de ML escolhido; (@dcarlospa)</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>Integrar o modelo com o frontend; (@dcarlospa e @ewertom-moraes)</li>
+</ol>
+</li>
+<li>
+<ol start="9">
+<li>Implantar em um servidor WEB; (@ygorduraes)</li>
+</ol>
+</li>
+</ul>
+<h1 class="mume-header" id="desenvolvimento">Desenvolvimento</h1>
+
+<p>Pesquisamos na WEB e n&#xE3;o encontramos um conjunto de dados que pudesse ser facilmente utilizado no projeto. Assim, decidimos que criar&#xED;amos o nosso pr&#xF3;prio <em>dataset</em>, utilizando o google forms (por ser gratuito e de f&#xE1;cil manipula&#xE7;&#xE3;o) e contando com a boa vontade de pelo menos 10% dos funcion&#xE1;rios do Banpar&#xE1;.</p>
+<h2 class="mume-header" id="cria%C3%A7%C3%A3o-do-dataset">Cria&#xE7;&#xE3;o do Dataset</h2>
+
+<p>A equipe de projeto refletiu sobre quais vari&#xE1;veis possuem maior correla&#xE7;&#xE3;o com a escolha de um livro e (empiricamente) chegou &#xE0; seguinte lista de atributos que deveriam compor o conjunto de dados, e criou o question&#xE1;rio no Google Forms conforme abaixo:</p>
+<ul>
+<li>G&#xEA;nero (Marcar uma op&#xE7;&#xE3;o entre Masculino, Feminino ou Outrxs);</li>
+<li>Idade (Resposta num&#xE9;rica);</li>
+<li>Escolaridade (Marcar uma op&#xE7;&#xE3;o entre Ensino M&#xE9;dio, Ensino Superior Incompleto, Ensino Superior Completo, Especializa&#xE7;&#xE3;o Completa, Mestrado Completo e Doutorado Completo);</li>
+<li>Gosto musical (21 Op&#xE7;&#xF5;es, podendo marcar v&#xE1;rias);</li>
+<li>Gosto cinematogr&#xE1;fico (23 Op&#xE7;&#xF5;es, podendo marcar v&#xE1;rias); e</li>
+<li>Gosto liter&#xE1;rio (34 Op&#xE7;&#xF5;es, podendo marcar v&#xE1;rias);</li>
+</ul>
+<p>Al&#xE9;m dessas vari&#xE1;veis, o formul&#xE1;rio possu&#xED;a duas perguntas finais: <em><strong>&quot;Quais seus livros preferidos de todos os tempos?&quot;</strong></em> e <em><strong>&quot;Quais livros voc&#xEA; adiquiriu recentemente e gostou?&quot;</strong></em>. Essas duas perguntas foram elaboradas para servirem de vari&#xE1;veis de sa&#xED;da do Modelo.</p>
+<p>A @patriciadaibes construiu um copy muito envolvente e conseguimos dobrar a meta &#x1F603;, que nos garantiu mais de 400 respostas ao formul&#xE1;rio.</p>
+<h2 class="mume-header" id="defini%C3%A7%C3%A3o-do-modelo-de-machine-learning">Defini&#xE7;&#xE3;o do Modelo de Machine Learning</h2>
+
+<p>O @dcarlospa decidiu que utilizar&#xED;amos o algoritmo KNN (K Vizinhos Mais Pr&#xF3;ximos), por ser de f&#xE1;cil implementa&#xE7;&#xE3;o e ser apropriado ao problema. Assim, quando um usu&#xE1;rio acessar a ferramenta e inserir os seus dados (6 vari&#xE1;veis de entrada) o KNN busca o vizinho mais pr&#xF3;ximo a, ou seja, a pessoa mais &quot;parecida&quot;. Como resultado o sistema apresentaria uma lista de livros, um por um, ordenando-os de acordo com a semelhan&#xE7;a entre as pessoas e dando a op&#xE7;&#xE3;o de o usu&#xE1;rio avaliar a sugest&#xE3;o, clicando em <em><strong>&quot;Gostei&quot;</strong></em> ou <em><strong>&quot;N&#xE3;o Gostei&quot;</strong></em>.</p>
+<h3 class="mume-header" id="defini%C3%A7%C3%A3o-do-frontend">Defini&#xE7;&#xE3;o do frontend</h3>
+
+<p>Paralelamente, o @ewertom-moraes estava escolhendo uma lista de templates HTML5+CSS3+JS que pudessem ser utilizados para integrar com o modelo de IA. Ap&#xF3;s algumas conversas e mais de 20 templates excelentes, optamos pelo meio termo entre o <strong>extremamente belo</strong> e o <strong>extremamente f&#xE1;cil de reutilizar</strong>.</p>
+<p>Assim, utilizamos o tema <a ref="https://codepen.io/creativetim/pen/EgVBXa?editors=1000" target="_blank" href>Material Bootstrap Wizard</a> por <a href="https://codepen.io" target="_blank">Creative Tim</a> da Rom&#xEA;nia.</p>
+<h3 class="mume-header" id="consolida%C3%A7%C3%A3o-da-base-de-dados">Consolida&#xE7;&#xE3;o da Base de Dados</h3>
+
+<p>O @vrfreitas teve o maior trabalho, pois foi respons&#xE1;vel por consolidar a base de dados da pesquisa. Como as respostas estavam em texto livre, o tempo que sobrava n&#xE3;o era suficiente para fazer um script que trata-se os dados automaticamente. Assim, ele teve que manualmente tratar as mais de 400 respotas, eliminando 50 delas.<br>
+O Conjunto de Dados final possui 620 amostras de treino. Algumas pessoas foram dupplicadas, pois indicaram mais de um livro preferido ou recente.<br>
+Al&#xE9;m disso, ele teve que buscar no google, manualmente, um link para a capa de cada livro &#x1F626;</p>
+<h3 class="mume-header" id="voc%C3%AA-pode-acessar-a-aplica%C3%A7%C3%A3o-e-testar-pelo-link-httpsestaleirouxgithubiover-o-livro">Voc&#xEA; pode acessar a aplica&#xE7;&#xE3;o e testar pelo Link: <a href="https://estaleiroux.github.io/ver-o-livro/">https://estaleiroux.github.io/ver-o-livro/</a></h3>
+
+<h1 class="mume-header" id="conclus%C3%A3o">Conclus&#xE3;o</h1>
+
+<p>Participamos da Feira por dois dias, ondem apresentamos a solu&#xE7;&#xE3;o e recebemos feedback positivos dos usu&#xE1;rios, que ficaram impressionados com o n&#xED;vel de acerto da ferramenta.</p>
+<p>Algumas pessoas j&#xE1; haviam lido alguns dos livros que o sistema recomendava e falaram que gostaram do livro.</p>
+<p>Outras pessoas ficaram interessadas em adquirir os livros recomendados.</p>
+<p>Em alguns casos, pessoas queriam adquirir um livro de um dom&#xED;nio espec&#xED;fico e esperavam que a ferramenta recomendasse um livro dessa natureza, o que n&#xE3;o acontecia.</p>
+<p>No total, durante a Feira, foram recomendados <strong>308 livros</strong>.<br>
+Desses, <strong>210</strong> foram marcados como <strong>Gostei</strong> e <strong>98</strong> como <strong>N&#xE3;o Gostei</strong>.</p>
+<h1 class="mume-header" id="pr%C3%B3ximos-passos">Pr&#xF3;ximos Passos</h1>
+
+<p>Como o feedback dos usu&#xE1;rios foi muito positivo, mesmo os que n&#xE3;o gostaram de alguns dos livros recomendados gostaram da ferramenta, queremos continuar aprimorando o sistema, com as atualiza&#xE7;&#xF5;es abaixo:</p>
+<ul>
+<li>Usar os dados de avalia&#xE7;&#xE3;o/feedback para aumentar o dataset;</li>
+<li>Executar mais uma pesquisa pelo Google Forms para aumentar o dataset e a varia&#xE7;&#xE3;o de livros;</li>
+<li>Migrar a escrita de avalia&#xE7;&#xF5;es para o Google Sheets;</li>
+<li>Implementar mais um algoritmo de Machine Learning para melhorar a qualidade da indica&#xE7;&#xE3;o;</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
