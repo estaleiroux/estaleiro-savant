@@ -162,7 +162,7 @@ async function envia() {
     $('#textoResposta').html(nome+', acredito que você vai gostar desse livro:');
     obj.idade = $('input[name="idade"]').val();
     obj.genero = $(`[type="radio"][name="genero"][checked]`).val();
-    obj.escolaridade = $(`[type="radio"][name="escolaridade"][checked]`).val();
+    obj.escolaridade = $(`[type="radio"][name="escolaridade"][checked]`).attr('data-index');
     obj.s = getArrayBooleanCheckboxs($(`[type="checkbox"][name="gostomusical"]`));
     obj.m = getArrayBooleanCheckboxs($(`[type="checkbox"][name="cinema"]`));
     obj.b = getArrayBooleanCheckboxs($(`[type="checkbox"][name="literario"]`));
@@ -244,9 +244,9 @@ function getArrayBooleanCheckboxs(checkboxs) {
 
 function proximo(opiniao){
     if(opiniao<0)	
-        $.post( "http://www.redecel.com/verolivro.php", { objeto: JSON.stringify(resultadoGlobal[contador].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
+        $.post( "https://script.google.com/macros/s/AKfycbx86LYyhHwRr2iiFj4uZiWPnW6KqAB-l9KuLAGBdq81VuLKYGY/exec", { objeto: JSON.stringify(resultadoGlobal[contador].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
     else
-        $.post( "http://www.redecel.com/verolivro.php", { objeto: JSON.stringify(resultadoGlobal[contador-1].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
+        $.post( "https://script.google.com/macros/s/AKfycbx86LYyhHwRr2iiFj4uZiWPnW6KqAB-l9KuLAGBdq81VuLKYGY/exec", { objeto: JSON.stringify(resultadoGlobal[contador-1].prop('outerHTML')),nome: JSON.stringify(pessoaNow), gostou: opiniao } );
     if(resultadoGlobal[contador]){
         $('#results').html(resultadoGlobal[contador].prop('outerHTML'));
         contador++;
